@@ -1,4 +1,5 @@
 import { IBM_Plex_Mono, Inter, Manrope } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const heading = Manrope({
@@ -49,6 +50,7 @@ export default function RootLayout({ children }) {
           Skip to content
         </a>
         {children}
+        <Analytics />
       </body>
     </html>
   );
