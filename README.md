@@ -1,59 +1,155 @@
-# Sivaraj Developer Portfolio
+Sivaraj Marimuthu — Developer Portfolio
 
-Professional portfolio website for Sivaraj Marimuthu, a full-stack and backend
-software engineer based in Thanjavur, India.
+Personal portfolio website for Sivaraj Marimuthu, a full-stack and backend software engineer based in Thanjavur, Tamil Nadu, India.
 
-## Included
+The website presents selected professional work, engineering services, experience, technical skills and availability for freelance, contract and full-time opportunities.
 
-- Responsive hybrid light/dark homepage
-- Diagonal technical hero
-- Capability-based services
-- Verified experience and skills
-- Four detailed case-study routes
-- LinkedIn, GitHub and downloadable DOCX resume
-- Responsive mobile navigation
-- SEO metadata and accessible page structure
+Portfolio sections
 
-## Development
+Professional introduction and availability
 
-```bash
+Selected work and detailed case studies
+
+Engineering services
+
+Professional experience
+
+Skills and technologies
+
+About
+
+Contact links
+
+Downloadable resume
+
+Featured case studies
+
+Enterprise Retail In-Shop Assistance Platform
+
+Game Center Billing and POS System
+
+Python Business Automation
+
+Grocery E-commerce Marketplace
+
+Project descriptions are intentionally generalized where necessary. Client-identifying information, proprietary workflows and confidential business details are not included.
+
+Technology used for this website
+
+Next.js
+
+React
+
+JavaScript
+
+CSS
+
+Next.js Image optimization
+
+Vercel deployment
+
+Local development
+
+Requirements
+
+Node.js
+
+npm
+
+Installation
+
+Clone the repository and enter the project folder:
+
+git clone <repository-url>
+cd <project-folder>
+
+Install the dependencies:
+
 npm install
+
+Start the development server:
+
 npm run dev
-```
 
-See `COMMANDS-CMD.txt` for the Windows Command Prompt workflow.
+Open http://localhost:3000 in a browser.
 
-## Technology
+Production build
 
-- Next.js App Router
-- JavaScript
-- CSS
-- Static export
+Create an optimized production build:
 
-## Production build
-
-```bash
-npm run lint
 npm run build
-```
 
-The deployable static files are generated in `out`.
+Run the production build locally:
 
-## Routes
+npm start
 
-- `/`
-- `/work/retail-in-shop-platform`
-- `/work/game-center-pos`
-- `/work/python-business-automation`
-- `/work/grocery-ecommerce-marketplace`
+Project structure
 
-## Resume
+app/ Next.js routes, layouts and global styles
+components/ Shared interface components
+content/ Portfolio, service and case-study content
+public/ Project images, resume and other static files
 
-The download links use:
+Important shared components include:
 
-```text
-public/resume/sivaraj-marimuthu-resume.docx
-```
+SiteHeader — desktop and mobile navigation
 
-Replace that document with a newer finalized resume while keeping the same
-filename to update every download link.
+SiteFooter — shared footer
+
+TechnicalVisual — CSS-based hero artwork
+
+CaseStudyPage — shared case-study layout
+
+CaseStudyContents — case-study contents navigation and active-section tracking
+
+Deployment with Vercel
+
+Push the project to a GitHub repository.
+
+Sign in to Vercel.
+
+Select Add New → Project.
+
+Import the GitHub repository.
+
+Confirm that Vercel detects Next.js.
+
+Select Deploy.
+
+Vercel will provide a preview or production URL after the deployment completes.
+
+Updating portfolio content
+
+Most reusable portfolio content is maintained in:
+
+content/portfolio.js
+
+Static project images and the downloadable resume are kept in public/ because files in that directory are served directly by URL.
+
+Accessibility and performance
+
+The website is designed with:
+
+Semantic page structure
+
+Keyboard-accessible navigation
+
+Visible focus and active-navigation states
+
+Responsive layouts for desktop and mobile screens
+
+Alternative text for meaningful images
+
+Reduced-motion support
+
+Optimized project images
+
+Contact
+
+LinkedIn
+
+GitHub
+
+Copyright
+
+Copyright © 2026 Sivaraj Marimuthu. All rights reserved.
