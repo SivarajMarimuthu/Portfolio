@@ -1,6 +1,10 @@
 import { IBM_Plex_Mono, Inter, Manrope } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+
 import "./globals.css";
+
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://sivaraj-marimuthu.vercel.app";
 
 const heading = Manrope({
   variable: "--font-heading",
@@ -19,12 +23,20 @@ const mono = IBM_Plex_Mono({
 });
 
 export const metadata = {
+  /*
+   * Base URL for canonical links, Open Graph images and other
+   * metadata URLs declared throughout the application.
+   */
+  metadataBase: new URL(siteUrl),
+
   title: {
     default: "Sivaraj Marimuthu | Full-Stack & Backend Software Engineer",
     template: "%s | Sivaraj Marimuthu",
   },
+
   description:
     "Portfolio of Sivaraj Marimuthu, a full-stack and backend software engineer based in Thanjavur, India.",
+
   keywords: [
     "Sivaraj Marimuthu",
     "full-stack developer",
@@ -33,12 +45,26 @@ export const metadata = {
     "Thanjavur",
     "India",
   ],
-  other: {
-    "codex-preview": "development",
-  },
+
+  authors: [
+    {
+      name: "Sivaraj Marimuthu",
+      url: siteUrl,
+    },
+  ],
+
+  creator: "Sivaraj Marimuthu",
+
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",
+  },
+
+  /*
+   * Existing development metadata preserved.
+   */
+  other: {
+    "codex-preview": "development",
   },
 };
 
@@ -49,7 +75,9 @@ export default function RootLayout({ children }) {
         <a className="skip-link" href="#main-content">
           Skip to content
         </a>
+
         {children}
+
         <Analytics />
       </body>
     </html>

@@ -31,7 +31,11 @@ const projectWorkflowLabels = {
   automation: "Input · Process · Deliver",
   commerce: "Browse · Order · Verify",
 };
-
+export const metadata = {
+  alternates: {
+    canonical: "/",
+  },
+};
 export default function Home() {
   return (
     <>
@@ -452,3 +456,10 @@ export default function Home() {
     </>
   );
 }
+
+/*
+ * Homepage-specific canonical URL.
+ *
+ * This belongs in page.js instead of the root layout so that
+ * case-study pages do not inherit the homepage canonical.
+ */
