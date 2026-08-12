@@ -75,9 +75,7 @@ export function SiteHeader() {
       }
 
       setActiveSection((previousSection) =>
-        previousSection === currentSection
-          ? previousSection
-          : currentSection,
+        previousSection === currentSection ? previousSection : currentSection,
       );
     };
 
@@ -86,9 +84,7 @@ export function SiteHeader() {
         cancelAnimationFrame(animationFrameId);
       }
 
-      animationFrameId = window.requestAnimationFrame(
-        updateActiveSection,
-      );
+      animationFrameId = window.requestAnimationFrame(updateActiveSection);
     };
 
     /*
@@ -124,23 +120,14 @@ export function SiteHeader() {
   return (
     <header className="site-header">
       <div className="shell site-header__inner">
-        <Link
-          className="brand"
-          href="/"
-          aria-label="Sivaraj Marimuthu home"
-        >
-          S
-          <span className="blue-dot">M</span>
+        <Link className="brand" href="/" aria-label="Sivaraj Marimuthu home">
+          S<span className="blue-dot">M</span>
         </Link>
 
-        <nav
-          className="desktop-navigation"
-          aria-label="Primary navigation"
-        >
+        <nav className="desktop-navigation" aria-label="Primary navigation">
           {navigation.map((item) => {
             const isActive =
-              pathname === "/" &&
-              activeSection === item.sectionId;
+              pathname === "/" && activeSection === item.sectionId;
 
             return (
               <a
@@ -157,7 +144,7 @@ export function SiteHeader() {
 
         <a
           className="header-resume"
-          href="/resume/sivaraj-marimuthu-resume.docx"
+          href="/resume/Sivaraj_Marimuthu_Complete_Professional_Resume.docx"
           download
         >
           Resume <span aria-hidden="true">↓</span>
@@ -174,22 +161,17 @@ export function SiteHeader() {
 
             {navigation.map((item, index) => {
               const isActive =
-                pathname === "/" &&
-                activeSection === item.sectionId;
+                pathname === "/" && activeSection === item.sectionId;
 
               return (
                 <a
                   key={item.label}
                   href={item.href}
                   className={isActive ? "is-active" : undefined}
-                  aria-current={
-                    isActive ? "location" : undefined
-                  }
+                  aria-current={isActive ? "location" : undefined}
                   onClick={closeMobileMenu}
                 >
-                  <span>
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
 
                   {item.label}
                 </a>
@@ -201,8 +183,7 @@ export function SiteHeader() {
               href="/resume/sivaraj-marimuthu-resume.docx"
               download
             >
-              Download resume{" "}
-              <span aria-hidden="true">↓</span>
+              Download resume <span aria-hidden="true">↓</span>
             </a>
           </nav>
         </details>
