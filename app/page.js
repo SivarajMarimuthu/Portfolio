@@ -55,10 +55,7 @@ export default function Home() {
             =================================================== */}
 
         <section className="hero" id="top" aria-labelledby="hero-title">
-          <div className="hero__dark" aria-hidden="true">
-            <TechnicalVisual variant="hero" />
-          </div>
-
+          {/* left side */}
           <div className="shell hero__inner">
             <div className="hero__copy">
               <p className="eyebrow">01 / Introduction</p>
@@ -97,6 +94,10 @@ export default function Home() {
                 </span>
               </div>
             </div>
+          </div>
+          {/* right side */}
+          <div className="hero__dark" aria-hidden="true">
+            <TechnicalVisual variant="hero" />
           </div>
         </section>
 
