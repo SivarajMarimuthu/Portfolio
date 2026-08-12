@@ -2351,7 +2351,7 @@ summary:focus-visible {
     text-transform: uppercase;
   }
 
-  .mobile-menu nav > a:not(.mobile-menu__resume) {
+  /* .mobile-menu nav > a:not(.mobile-menu__resume) {
     padding-block: 1rem;
     display: flex;
     gap: 1rem;
@@ -2360,6 +2360,18 @@ summary:focus-visible {
     font-family: var(--font-heading), sans-serif;
     font-size: clamp(1.6rem, 7vw, 2.3rem);
     font-weight: 650;
+  } */
+
+  .mobile-menu nav > a:not(.mobile-menu__resume),
+  .mobile-menu__resume {
+    border-bottom: 1px solid var(--border-dark);
+    font-family: var(--font-heading), sans-serif;
+    align-items: center;
+    gap: 1rem;
+    padding-block: 1rem;
+    padding-inline: clamp(1rem, 4vw, 2.2rem);
+    font-weight: 600;
+    display: flex;
   }
 
   .mobile-menu nav > a > span {
@@ -2376,6 +2388,7 @@ summary:focus-visible {
     justify-content: space-between;
     background: var(--blue);
     font-weight: 650;
+    justify-content: center;
   }
 
   .section-heading--split,
