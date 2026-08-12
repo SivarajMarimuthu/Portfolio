@@ -2446,10 +2446,23 @@ summary:focus-visible {
   }
 
   .hero__dark {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 43%;
+    z-index: 1;
+    overflow: hidden;
+    background:
+      linear-gradient(rgb(37 99 235 / 9%), transparent 48%), var(--navy);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+
+  .hero__dark {
     position: relative;
     left: 0;
     min-height: 400px;
-    clip-path: polygon(0 18%, 100% 0, 100% 100%, 0 100%);
+    /* clip-path: polygon(0 18%, 100% 0, 100% 100%, 0 100%); */
   }
 
   .hero__dark .technical-visual {
