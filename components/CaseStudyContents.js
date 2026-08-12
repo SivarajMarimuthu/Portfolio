@@ -78,6 +78,15 @@ export function CaseStudyContents({ contributions }) {
   //     observer.disconnect();
   //   };
   // }, [navigationItems]);
+
+  /* ========================================================
+   ACTIVE SECTION DETECTION
+
+   Checks every section against one fixed activation line.
+   This avoids the IntersectionObserver race that caused the
+   active item and URL hash to remain one section behind.
+   ======================================================== */
+
   useEffect(() => {
     const sections = navigationItems
       .map((item) => document.getElementById(item.id))
@@ -96,61 +105,42 @@ export function CaseStudyContents({ contributions }) {
       const headerHeight = header?.getBoundingClientRect().height ?? 0;
 
       /*
-       * A section becomes active shortly below the sticky header.
-       * Increasing this value activates the next section earlier.
+       * A section becomes active shortly after passing below
+       * the sticky header.
        */
-      const activationLine = headerHeight + 120;
+      const activationLine = headerHeight + 40;
 
-      let currentSection = sections[0].id;
+      let nextActiveSection = sections[0].id;
 
-      /*
-       * Select the final section whose heading has crossed the
-       * activation line.
-       */
-      sections.forEach((section) => {
+      for (const section of sections) {
         const sectionTop = section.getBoundingClientRect().top;
 
         if (sectionTop <= activationLine) {
-          currentSection = section.id;
-        }
-      });
-
-      /*
-       * At the bottom of the case-study content, guarantee that
-       * Technology remains active. Without this safeguard, there
-       * may not be enough scrolling space for its heading to cross
-       * the activation line.
-       */
-      const lastSection = sections[sections.length - 1];
-      const caseOverview = lastSection.closest(".case-overview");
-
-      if (caseOverview) {
-        const overviewBottom = caseOverview.getBoundingClientRect().bottom;
-
-        if (overviewBottom <= window.innerHeight + 8) {
-          currentSection = lastSection.id;
+          nextActiveSection = section.id;
+        } else {
+          break;
         }
       }
 
-      // setActiveSection((previousSection) => {
-      //   if (previousSection === currentSection) {
-      //     return previousSection;
-      //   }
+      /*
+       * Ensure Technology remains active at the bottom of the page.
+       */
+      const reachedPageBottom =
+        window.scrollY + window.innerHeight >=
+        document.documentElement.scrollHeight - 2;
 
-      //   window.history.replaceState(
-      //     null,
-      //     "",
-      //     `${window.location.pathname}${window.location.search}#${currentSection}`,
-      //   );
+      if (reachedPageBottom) {
+        nextActiveSection = sections[sections.length - 1].id;
+      }
 
-      //   return currentSection;
-      // });
-      setActiveSection((previousSection) =>
-        previousSection === currentSection ? previousSection : currentSection,
+      setActiveSection((currentSection) =>
+        currentSection === nextActiveSection
+          ? currentSection
+          : nextActiveSection,
       );
     }
 
-    function requestActiveSectionUpdate() {
+    function scheduleActiveSectionUpdate() {
       if (animationFrameId !== null) {
         return;
       }
@@ -158,29 +148,24 @@ export function CaseStudyContents({ contributions }) {
       animationFrameId = window.requestAnimationFrame(updateActiveSection);
     }
 
-    /*
-     * Run once after mounting so a URL containing a hash receives
-     * the correct active state immediately.
-     */
-    requestActiveSectionUpdate();
+    updateActiveSection();
 
-    window.addEventListener("scroll", requestActiveSectionUpdate, {
+    window.addEventListener("scroll", scheduleActiveSectionUpdate, {
       passive: true,
     });
 
-    window.addEventListener("resize", requestActiveSectionUpdate);
+    window.addEventListener("resize", scheduleActiveSectionUpdate);
 
     return () => {
       if (animationFrameId !== null) {
         window.cancelAnimationFrame(animationFrameId);
       }
 
-      window.removeEventListener("scroll", requestActiveSectionUpdate);
+      window.removeEventListener("scroll", scheduleActiveSectionUpdate);
 
-      window.removeEventListener("resize", requestActiveSectionUpdate);
+      window.removeEventListener("resize", scheduleActiveSectionUpdate);
     };
   }, [navigationItems]);
-
   /* ==========================================================
    URL HASH SYNCHRONIZATION
 
@@ -189,6 +174,27 @@ export function CaseStudyContents({ contributions }) {
    updated while CaseStudyContents is rendering.
    ========================================================== */
 
+  // useEffect(() => {
+  //   if (!activeSection) {
+  //     return;
+  //   }
+
+  //   const nextHash = `#${activeSection}`;
+
+  //   /*
+  //    * Avoid writing the same hash repeatedly.
+  //    */
+  //   if (window.location.hash === nextHash) {
+  //     return;
+  //   }
+
+  //   window.history.replaceState(
+  //     null,
+  //     "",
+  //     `${window.location.pathname}${window.location.search}${nextHash}`,
+  //   );
+  // }, [activeSection]);
+  /* Update the URL only after React has completed rendering. */
   useEffect(() => {
     if (!activeSection) {
       return;
@@ -196,19 +202,17 @@ export function CaseStudyContents({ contributions }) {
 
     const nextHash = `#${activeSection}`;
 
-    /*
-     * Avoid writing the same hash repeatedly.
-     */
     if (window.location.hash === nextHash) {
       return;
     }
 
     window.history.replaceState(
-      null,
+      window.history.state,
       "",
       `${window.location.pathname}${window.location.search}${nextHash}`,
     );
   }, [activeSection]);
+
   return (
     <aside className="case-contents">
       <div className="case-contents__menu">
