@@ -52,56 +52,10 @@ export function CaseStudyPage({ project }) {
 */}
 
         <section className={`case-hero case-hero--${project.visual}`} id="top">
-          {/*
-    The dark content layer contains the title and project details.
-    CSS creates the diagonal edge extending into the image panel.
-  */}
+          {/*The dark content layer contains the title and project details. CSS creates the diagonal edge extending into the image panel.
+           */}
           <div className="case-hero__light" aria-hidden="true" />
-
-          {/*
-    The image occupies the right side of the hero independently
-    from the content shell, allowing it to feel like part of the
-    hero composition rather than a floating image card.
-  */}
-          <div className="case-hero__image-panel">
-            {/*
-    Decorative enlarged backdrop.
-
-    This fills the unusually tall image panel without forcing the
-    primary project artwork itself to be cropped.
-  */}
-            <Image
-              src={project.image}
-              alt=""
-              fill
-              sizes="(max-width: 820px) 100vw, 58vw"
-              className="case-hero__image-backdrop"
-              aria-hidden="true"
-              priority
-            />
-
-            {/*
-    Primary image.
-
-    `object-fit: contain` keeps the complete project artwork visible.
-    The blurred backdrop fills any remaining space around it.
-  */}
-            <Image
-              src={project.image}
-              alt={project.imageAlt}
-              fill
-              sizes="(max-width: 820px) 100vw, 58vw"
-              className="case-hero__image"
-              priority
-            />
-
-            <span className="case-hero__image-overlay" aria-hidden="true" />
-
-            <span className="case-hero__visual-label">
-              Conceptual project visual
-            </span>
-          </div>
-
+          {/* left side */}
           <div className="shell case-hero__inner">
             <Link className="back-link" href="/#work">
               ← Back to selected work
@@ -110,14 +64,6 @@ export function CaseStudyPage({ project }) {
             <div className="case-hero__content">
               <p className="eyebrow">Case study / {project.domain}</p>
 
-              {/*
-        LEGACY VERSION:
-
-        <h1>{project.title}</h1>
-
-        The commerce title retains the non-breaking E-commerce
-        phrase so its hyphen cannot be stranded at a line ending.
-      */}
               <h1>
                 {project.visual === "commerce" ? (
                   <>
@@ -139,6 +85,44 @@ export function CaseStudyPage({ project }) {
                 )}
               </div>
             </div>
+          </div>
+
+          {/* right side */}
+          {/*
+              The image occupies the right side of the hero independently
+              from the content shell, allowing it to feel like part of the
+              hero composition rather than a floating image card. */}
+          <div className="case-hero__image-panel">
+            {/*
+                Decorative enlarged backdrop.
+
+                This fills the unusually tall image panel without forcing the
+                primary project artwork itself to be cropped. */}
+            <Image
+              src={project.image}
+              alt=""
+              fill
+              sizes="(max-width: 820px) 100vw, 58vw"
+              className="case-hero__image-backdrop"
+              aria-hidden="true"
+              priority
+            />
+
+            {/* Primary image.`object-fit: contain` keeps the complete project artwork visible.The blurred backdrop fills any remaining space around it. */}
+            <Image
+              src={project.image}
+              alt={project.imageAlt}
+              fill
+              sizes="(max-width: 820px) 100vw, 58vw"
+              className="case-hero__image"
+              priority
+            />
+
+            <span className="case-hero__image-overlay" aria-hidden="true" />
+
+            <span className="case-hero__visual-label">
+              Conceptual project visual
+            </span>
           </div>
         </section>
 
