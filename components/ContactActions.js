@@ -30,7 +30,7 @@ export function ContactActions({ showResume = false }) {
       {showResume && (
         <a
           className="button button--outline"
-          href="/resume/Sivaraj_Marimuthu_Complete_Professional_Resume.docx"
+          href="/resume/Sivaraj_Marimuthu.docx"
           download
         >
           Download resume <span aria-hidden="true">↓</span>

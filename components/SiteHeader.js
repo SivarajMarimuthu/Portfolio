@@ -291,7 +291,7 @@ export function SiteHeader() {
 
         <a
           className="header-resume"
-          href="/resume/Sivaraj_Marimuthu_Complete_Professional_Resume.docx"
+          href="/resume/Sivaraj_Marimuthu.docx"
           download
         >
           Resume <span aria-hidden="true">↓</span>
@@ -338,7 +338,7 @@ export function SiteHeader() {
 
             <a
               className="mobile-menu__resume"
-              href="/resume/Sivaraj_Marimuthu_Complete_Professional_Resume.docx"
+              href="/resume/Sivaraj_Marimuthu.docx"
               download
               onClick={closeMobileMenu}
             >
