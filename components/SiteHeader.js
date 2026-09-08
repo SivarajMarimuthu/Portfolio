@@ -315,7 +315,7 @@ export function SiteHeader() {
           </summary>
 
           <nav aria-label="Mobile navigation">
-            <p>Navigation</p>
+            {/* <p>Navigation</p> */}
 
             {navigation.map((item, index) => {
               const isActive =
