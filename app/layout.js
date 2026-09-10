@@ -122,7 +122,7 @@ export const metadata = {
 
     images: [
       {
-        url: "/og/home.png",
+        url: "/og/sm.png",
         width: 1200,
         height: 630,
         alt: "Sivaraj Marimuthu — Full-Stack and Backend Software Engineer",
@@ -134,7 +134,7 @@ export const metadata = {
     card: "summary_large_image",
     title: siteTitle,
     description: siteDescription,
-    images: ["/og/home.png"],
+    images: ["/og/sm.png"],
   },
 };
 
