@@ -69,12 +69,12 @@ const mono = IBM_Plex_Mono({
 // };
 
 const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://sivaraj-marimuthu.vercel.app";
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://sivarajmarimuthu.in";
 
 const siteTitle = "Sivaraj Marimuthu | Full-Stack & Backend Software Engineer";
 
 const siteDescription =
-  "Full-stack and backend software engineer based in Thanjavur, India. Available for freelance projects, contract work and full-time opportunities.";
+  "Full-stack and backend software engineer . Available for freelance projects, contract work and full-time opportunities.";
 
 export const metadata = {
   metadataBase: new URL(siteUrl),
