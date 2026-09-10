@@ -74,7 +74,7 @@ const siteUrl =
 const siteTitle = "Sivaraj Marimuthu | Full-Stack & Backend Software Engineer";
 
 const siteDescription =
-  "Full-stack and backend software engineer based in Thanjavur, India. Available for freelance projects, contract work and full-time opportunities.";
+  "Full-stack and backend software engineer, India. Available for freelance projects, contract work and full-time opportunities.";
 
 export const metadata = {
   metadataBase: new URL(siteUrl),
