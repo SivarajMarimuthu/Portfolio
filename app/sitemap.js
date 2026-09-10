@@ -16,7 +16,7 @@ import { projects } from "@/content/portfolio";
 export const dynamic = "force-static";
 
 const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://sivaraj-marimuthu.vercel.app";
+  process.env.NEXT_PUBLIC_SITE_URL || "https://sivarajmarimuthu.in";
 
 export default function sitemap() {
   const projectPages = projects.map((project) => ({
